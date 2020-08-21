@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6af1a113-8526-4b66-94e0-f167ab606edd" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/index2.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/statics/appendix.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/statics/appendix.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/statics/imgs/Environment.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/statics/imgs/Environment.jpg" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,8 +18,17 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="31" column="9" lean-forward="true" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="9" />
+            <state relative-caret-position="2677">
+              <caret line="241" column="96" lean-forward="true" selection-start-line="241" selection-start-column="96" selection-end-line="241" selection-end-column="96" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index2.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index2.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="348">
+              <caret line="239" selection-start-line="239" selection-end-line="300" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -30,6 +38,8 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>captain</find>
+      <find />
+      <find>uuv</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -51,7 +61,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-31" />
     <option name="width" value="1940" />
     <option name="height" value="1047" />
@@ -86,6 +96,11 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\lenovo\Documents\GitHub\Captain.github.io" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -178,10 +193,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/index2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="239" selection-start-line="239" selection-end-line="300" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="31" column="9" lean-forward="true" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="9" />
+        <state relative-caret-position="2677">
+          <caret line="241" column="96" lean-forward="true" selection-start-line="241" selection-start-column="96" selection-end-line="241" selection-end-column="96" />
         </state>
       </provider>
     </entry>
