@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6af1a113-8526-4b66-94e0-f167ab606edd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/index2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,8 +16,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2677">
-              <caret line="241" column="96" lean-forward="true" selection-start-line="241" selection-start-column="96" selection-end-line="241" selection-end-column="96" />
+            <state relative-caret-position="212">
+              <caret line="43" column="19" lean-forward="true" selection-start-line="43" selection-start-column="19" selection-end-line="43" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -38,7 +36,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>captain</find>
-      <find />
+      <find>Case 3 UUV Oceanic Surveillance</find>
       <find>uuv</find>
     </findStrings>
   </component>
@@ -61,7 +59,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-31" />
     <option name="width" value="1940" />
     <option name="height" value="1047" />
@@ -202,8 +200,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2677">
-          <caret line="241" column="96" lean-forward="true" selection-start-line="241" selection-start-column="96" selection-end-line="241" selection-end-column="96" />
+        <state relative-caret-position="212">
+          <caret line="43" column="19" lean-forward="true" selection-start-line="43" selection-start-column="19" selection-end-line="43" selection-end-column="19" />
         </state>
       </provider>
     </entry>
