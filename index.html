@@ -52,7 +52,7 @@
     <section class="container">
         <div class="row my-4 text-center">
             <div class="col">
-                <h2>Case 1 MATLAB Simulation of UAV</h2>
+                <h2>Case 1 MATLAB Simulation of Quadrotor</h2>
             </div>
         </div>
 
@@ -131,13 +131,9 @@
             </div>
             <div class="col">
                 <!--<h5>Case 3 UUV Oceanic Surveillance</h5>-->
-                <p class="mb-3">Given a violation tolerance, the average rate of time instants violating relaxable constraints are recorded per simulation.
-                    We choose $\epsilon_{SR,PR,\varphi,\xi,e} =\{10^{-20},10^{-20},10^{-10},10^{-20},0.005\}$ for the UAV case, the average rates of time instants that do not report
-                    violation of the relaxable constraints of safety, privacy, timeliness, accuracy, and energy-saving in the UAV scenario are 16.0%, 14.7%, 29.0%, 25.5%, and 1.1% respectively.
-                    These results show that choosing the right violation tolerance parameters can help determine the appropriate set of unsatisfied constraints with a smaller impact on
-                    the algorithm’s efficiency.
-                    In the case where the choice of tolerance parameter may affect the convergence in the <i>Constraints Satisfaction Optimization</i> step and result in no feasible
-                    solutions,  ACMP can directly leverage the planning results from the <i>Constraints Satisfaction Checking</i> step, as illustrated in Algorithm 1.
+                <p class="mb-3">Given a set of violation tolerances, the possibilities that relaxable constraints are reported as unsatisfiable are recorded per simulation.
+                                These results show that choosing the right violation tolerance parameters can help determine the appropriate set of unsatisfied constraints
+                                with a smaller impact on the algorithm’s efficiency.
                 </p>
 
             </div>
@@ -196,7 +192,7 @@
             </div>
             <div class="col">
                 <h5>Experiment Setup</h5>
-                <p class="mb-3">The vehicle hardware specifications are: </p>
+                <p class="mb-3">The Unmanned Aerial Vehicle hardware specifications are: </p>
                 <ul>
                     <li>Vehicle Type <br> DJI Matrice 100</li>
                     <li>Control Method <br> DJI Mobile SDK</li>
@@ -276,56 +272,56 @@
                     multiple dynamic constraints under uncertainties and disturbances through ACMP, while other configurations like sensors are kept the same.
                     <br>The constraints to achieve in this scenario are listed as below:</p>
                 <ul>
-                    <li>Scanning Distance ($C_l$): A segment of surface over a distance of $L_t=100$ km is expected to be examined by the UUV within $\Delta=10$ hours,
-                        while the distance threshold is $L=90$ km. </li>
-                    <li>Energy Consumption ($C_e$): A total amount of energy $E_t=5.4$ MJ is expected to be consumed, while the maximum amount of energy is $E=6$ MJ.</li>
-                    <li>Accuracy ($C_{\varphi}$): The accuracy of sensor measurements is targeted at $A_t=90\%$, while the accuracy threshold is set as $A = 80\%$. </li>
+                    <li>Scanning Distance ($C_l$): A segment of the surface over a distance of $L_t=100$ km is expected to be examined by the UUV within $\Delta=10$ hours,
+                        while the unrelaxable constraint of surveillance distance is $L=90$ km.  </li>
+                    <li>Energy Consumption ($C_E$): A total amount of energy $E_t=5.4$ MJ is expected to be consumed, while the maximum amount of energy is $E=6$ MJ.</li>
+                    <li>Accuracy ($C_{\varphi}$): The accuracy of sensor measurements is targeted at $A_t=90\%$, while the unrelaxable accuracy constraint is set as $A = 80\%$. </li>
                 </ul>
          </p> <br>
-        <p>
-            <h3>A. Constraints Satisfaction Modeling</h3>
-            <p>The UUV is equiped with 5 sensors for ocean surveillance. The scanning time 10 hours is 360 time instance, $x_i, i\in[1,5]$ is the portion of time the sensor $i$ should be
-                used during system operation in each instance. $Acc_i$ is the accuracy of sensor $i$; $E_i$ is the energy consumed by sensor; $V_i$ is the scanning speed of sensor. $q_i$ is
-                portion of accuracy of sensor and $p_i$ is for scanning speed respectively in decimals. The energy consumed is related with working accuracy and speed of sensor. The
-                corresponding measures are listed as follows: $\mathcal{X}_{l}= \sum_{k=0}^{T} \sum_{i=0}^{N} x_iq_iV_i \tau$,
-                $\mathcal{X}_{e}= \sum_{k=0}^{T} \sum_{i=0}^{N} x_iE_i\cdot \frac{e^{p_i + q_i}-1}{e^2-1} \tau$, and
-                $\mathcal{X}_{\varphi}=\sum_{k=0}^{T} \sum_{i=0}^{N} x_ip_iAcc_i$, where $T=360$, i.e., adaptations is performed every 100 surface measurements of the UUV state,, and the
-                time instance $k$ incremented by $1\sim100$. The constraint satisfaction functions are listed as follows:</p>
-            <strong>Scanning distance</strong>: A segment of surface over a distance of $L_t=100$ km is expected to be examined by the UUV within $\Delta=10$ hours, while the distance
-             threshold is $L=90$ km.
-            \begin{equation}
-            \mathrm{DS}^2(\mathcal{X}_{l})=\left\{
-            \begin{aligned}
-            &1 , & \mathcal{X}_{l}\geq L_t \\
-            &\frac{\mathcal{X}_{l}-L}{L_t-L},  &  L \leq \mathcal{X}_{l} < L_t  \\
-            &0,  & \mathcal{X}_{l} < L
-            \end{aligned}
-            \right.
-            \end{equation}
-            <strong>Energy-saving</strong>: A total amount of energy $E_t=5.4$ MJ is expected to be consumed, while the maximum amount of energy is $E=6$ MJ.
-            \begin{equation}
-            \mathrm{DS}^1(\mathcal{X}_{e})=\left\{
-            \begin{aligned}
-            &1 , & \mathcal{X}_e \leq E_t \\
-            &\frac{E-\mathcal{X}_e}{E-E_t},   & E_t < \mathcal{X}_e \leq E  \\
-            &0,  &\mathcal{X}_e > E
-            \end{aligned}
-            \right.
-            \end{equation}
-            <strong>Accuracy</strong>: The accuracy of sensor measurements is targeted at $A_t=90\%$, while the accuracy threshold is set as $A = 80\%$.
-            \begin{equation}
-            \mathrm{DS}^2(\mathcal{X}_{\varphi})=\left\{
-            \begin{aligned}
-            &1 , & \mathcal{X}_{\varphi}\geq A_t \\
-            &\frac{\mathcal{X}_{\varphi}-A}{A_t-A},  &  A \leq \mathcal{X}_{\varphi_k} < A_t  \\
-            &0,  & \mathcal{X}_{\varphi} < A
-            \end{aligned}
-            \right.
-            \end{equation}
-        </p>
+<!--        <p>-->
+<!--            <h3>A. Constraints Satisfaction Modeling</h3>-->
+<!--            <p>The UUV is equiped with 5 sensors for ocean surveillance. The scanning time 10 hours is 360 time instance, $x_i, i\in[1,5]$ is the portion of time the sensor $i$ should be-->
+<!--                used during system operation in each instance. $Acc_i$ is the accuracy of sensor $i$; $E_i$ is the energy consumed by sensor; $V_i$ is the scanning speed of sensor. $q_i$ is-->
+<!--                portion of accuracy of sensor and $p_i$ is for scanning speed respectively in decimals. The energy consumed is related with working accuracy and speed of sensor. The-->
+<!--                corresponding measures are listed as follows: $\mathcal{X}_{l}= \sum_{k=0}^{T} \sum_{i=0}^{N} x_iq_iV_i \tau$,-->
+<!--                $\mathcal{X}_{e}= \sum_{k=0}^{T} \sum_{i=0}^{N} x_iE_i\cdot \frac{e^{p_i + q_i}-1}{e^2-1} \tau$, and-->
+<!--                $\mathcal{X}_{\varphi}=\sum_{k=0}^{T} \sum_{i=0}^{N} x_ip_iAcc_i$, where $T=360$, i.e., adaptations is performed every 100 surface measurements of the UUV state,, and the-->
+<!--                time instance $k$ incremented by $1\sim100$. The constraint satisfaction functions are listed as follows:</p>-->
+<!--            <strong>Scanning distance</strong>: A segment of surface over a distance of $L_t=100$ km is expected to be examined by the UUV within $\Delta=10$ hours, while the distance-->
+<!--             threshold is $L=90$ km.-->
+<!--            \begin{equation}-->
+<!--            \mathrm{DS}^2(\mathcal{X}_{l})=\left\{-->
+<!--            \begin{aligned}-->
+<!--            &1 , & \mathcal{X}_{l}\geq L_t \\-->
+<!--            &\frac{\mathcal{X}_{l}-L}{L_t-L},  &  L \leq \mathcal{X}_{l} < L_t  \\-->
+<!--            &0,  & \mathcal{X}_{l} < L-->
+<!--            \end{aligned}-->
+<!--            \right.-->
+<!--            \end{equation}-->
+<!--            <strong>Energy-saving</strong>: A total amount of energy $E_t=5.4$ MJ is expected to be consumed, while the maximum amount of energy is $E=6$ MJ.-->
+<!--            \begin{equation}-->
+<!--            \mathrm{DS}^1(\mathcal{X}_{e})=\left\{-->
+<!--            \begin{aligned}-->
+<!--            &1 , & \mathcal{X}_e \leq E_t \\-->
+<!--            &\frac{E-\mathcal{X}_e}{E-E_t},   & E_t < \mathcal{X}_e \leq E  \\-->
+<!--            &0,  &\mathcal{X}_e > E-->
+<!--            \end{aligned}-->
+<!--            \right.-->
+<!--            \end{equation}-->
+<!--            <strong>Accuracy</strong>: The accuracy of sensor measurements is targeted at $A_t=90\%$, while the accuracy threshold is set as $A = 80\%$.-->
+<!--            \begin{equation}-->
+<!--            \mathrm{DS}^2(\mathcal{X}_{\varphi})=\left\{-->
+<!--            \begin{aligned}-->
+<!--            &1 , & \mathcal{X}_{\varphi}\geq A_t \\-->
+<!--            &\frac{\mathcal{X}_{\varphi}-A}{A_t-A},  &  A \leq \mathcal{X}_{\varphi_k} < A_t  \\-->
+<!--            &0,  & \mathcal{X}_{\varphi} < A-->
+<!--            \end{aligned}-->
+<!--            \right.-->
+<!--            \end{equation}-->
+<!--        </p>-->
 
-        <p>
-            <h3>B. Experiment Results</h3> <br>
+<!--        <p>-->
+            <h3>Experiment Results</h3> <br>
             <h4>1. Effectivess</h4>
            <div class="row my-3">
             <div class="col">
@@ -345,11 +341,14 @@
             </div>
             <div class="col">
                 <!--<h5>Case 3 UUV Oceanic Surveillance</h5>-->
-                <p> At $k = 100$ we change the available energy change from 5.4 to 5.0 MJ, at $k = 160$ we change the distance to be scanned from 100 to 105 km. The plots show that these
-                    changes in constraints lead to corresponding changes in the arrangement of sensor usage, as the time portion for $S2$ increases. The figure also shows how ACMP reacts
-                    to changes in sensor parameters and sensor failures. At $k = 220$, the measurement accuracy of sensor $S3$ drastically decreases from 83% to
-                    43%, at $k = 290$, $S4$ stops working, and leads to an optimal solution that $S1$ is more exploited. At last, the mission end with average measurement accuracy at
-                    90.1%, scanning distance at 106.7 km, energy consumption at 4.98 MJ.
+                <p> At $k = 100$, we change the target energy consumption ($E_t$) from 5.4 to 5.0 MJ; at $k = 160$,
+                    we change the distance expected to be scanned ($L_t$) from 100 to 105 km. The plots show that
+                    these changes in constraints lead to corresponding changes in the sensor usage arrangement,
+                    as the time portion for $S2$ increases. The figure also shows how
+                    ACMP reacts to changes in sensor parameters and sensor failures. At $k = 220$, the measurement
+                    accuracy of sensor $S3$ drastically decreases from 83\% to 43\%, at $k = 290$, $S4$ stops working,
+                    and leads to an optimal solution that $S1$ is more exploited. Finally, the mission end with average
+                    measurement accuracy at 90.1\%, scanning distance at 106.7 km, and energy consumption at 4.98 MJ.
                 </p>
             </div>
            </div>
@@ -374,10 +373,9 @@
             <div class="col">
                 <!--<h5>Case 3 UUV Oceanic Surveillance</h5>-->
                 <p>The experimental results demonstrate the generality of ACMP.
-                    The performance of the three methods are compared while adding random failures to parameters of sensors, i.e., sensor accuracy, scanning speed
-                    and energy consumption. For each frequency of disturbances, we simulated 500 rounds and computed the average accuracy, scanning distance and energy consumption.
-                    From the experimental results listed in the table, with ACMP, the UUV can scan a longer distance with higher accuracy and less energy consumption
-                    than AMOCS-MA and GSlack.
+                   The performance of ACMP and SCMP is compared while adding disturbances to sensors' parameters at random time instants,
+                    i.e., sensor accuracy, scanning speed, and energy consumption.
+                    With ACMP, the UUV can scan a longer distance with higher accuracy and less energy consumption than SCMP.
                 </p>
             </div>
         </div>  <br>
@@ -400,8 +398,9 @@
             </div>
             <div class="col">
                 <!--<h5>Case 3 UUV Oceanic Surveillance</h5>-->
-                <p>The difference in average computation time between AMOCS-MA and ACMP is about 7~ms (0.0423 s versus 0.0344 s) in the UUV case.
-                    ACMP has larger variance since the number of constraints to be optimized may vary at runtime.
+                <p>The difference in average computation time between SCMP and ACMP is about 7~ms
+                    (0.0423 s versus 0.0344 s) in the UUV case and 130~ms (0.2115 s versus 0.0811 s)
+                    in the quadrotor case.
                 </p>
             </div>
         </div>  <br>
@@ -424,7 +423,7 @@
             </div>
             <div class="col">
                 <!--<h5>Case 3 UUV Oceanic Surveillance</h5>-->
-                <p class="mb-3">In the UUV case, we choose $\epsilon_{\varphi,e,l} = \{10^{-3},0,0\}$, when the adaptation rate of each constraint tends to be gentle. </p>
+                <p class="mb-3">In the UUV case, we choose $\epsilon_{l,E,\varphi} = \{0,0,10^{-3}\}$, when the possibility of reporting unsatisfiable constraints tends to be gentle.  </p>
 
             </div>
         </div>
