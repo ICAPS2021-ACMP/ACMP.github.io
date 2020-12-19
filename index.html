@@ -45,7 +45,7 @@
     <div class="header">
         <div class="header__main-title text-center">
             <h1 class="display-2">ACMP</h1>
-            <h5 class="display-5">Adaptive Motion Planning via Dynamic Constraints Satisfaction for Autonomous Mobile Robots</h5>
+            <h5 class="display-5">Adaptive Motion Planning via Dynamic Constraint Satisfaction for Autonomous Mobile Robots</h5>
         </div>
     </div>
 
@@ -73,7 +73,7 @@
                 <ul>
                     <li>
                         <i>Setting 1</i> <br>
-                        environment generated randomly with the scale of $10\times10\times10m$, private regions are marked as red and large spheres, and obstacles
+                        random generated environment with the scale of $10\times10\times10m$, private regions are marked as red and large spheres, and obstacles
                         are marked as blue and small spheres. <br>
                     </li>
                 </ul>
@@ -89,7 +89,7 @@
                 <ul>
                     <li>
                         <i>Setting 2 </i> <br>
-                           environment model are based on the building dataset of Portland in the USA with the scale of $500\times500\times100m$ <br>
+                           simulated environment based on the building dataset of Portland in the USA with the original space of $500\times500\times100m$ and compressed into $50\times50\times10$<br>
                     </li>
                 </ul>
             </div>
@@ -104,7 +104,7 @@
                 <ul>
                     <li>
                         <i>Setting 3</i> <br>
-                           environment model are based on the building dataset of Portland in the USA with the scale of $1000\times1000\times100m$ <br>
+                           simulated environment based on the building dataset of Portland in the USA the original space of $1000\times1000\times100m$ and compressed into $100\times100\times10$<br>
                     </li>
                 </ul>
             </div>
@@ -122,7 +122,7 @@
 
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="statics/imgs/UAV_epsilon.jpg" class="d-block w-100">
+                            <img src="statics/imgs/UAV_epsilon.png" class="d-block w-100">
                             <div class="carousel-caption d-none d-md-block">
                             </div>
                         </div>
@@ -131,7 +131,8 @@
             </div>
             <div class="col">
                 <!--<h5>Case 3 UUV Oceanic Surveillance</h5>-->
-                <p class="mb-3">Given a set of violation tolerances, the possibilities that relaxable constraints are reported as unsatisfiable are recorded per simulation.
+                <p class="mb-3">Given a set of violation tolerances, the possibilities that relaxable constraints are reported as unsatisfiable are recorded per simulation
+                                under $\rho_o = 2\%, \rho_p = 2\%$.
                                 These results show that choosing the right violation tolerance parameters can help determine the appropriate set of unsatisfied constraints
                                 with a smaller impact on the algorithm’s efficiency.
                 </p>
@@ -211,13 +212,15 @@
 <!--                <p>The normal run is consists of three parts:</p>-->
                 <ol>
                     <li class="mt-3">The UAV following the reference path with camera orientation down to the ground.</li>
-                    <li class="mt-3">The flight mission is expected to be completed with the target time ($\Delta_t$) at 24 time steps without any privacy risk.</li>
-                    <li class="mt-3">Both of the environment and UAV motions are discrete ($20\times20\times10m$), and the UAV moves at the speed of $0.5m/s$, time instant $\tau=2s$, $N=2$, $\omega \in [33.3\%, 100\%]$ ,
-                        where orientation angles $-90^\circ$ (direct to ground) is represented with $\omega = 100\%$ and $30^\circ$ is $w = 33.3\%$.</li>
-                    <li class="mt-3">Two settings of experiments are evaluated for the approach</li>
+                    <li class="mt-3">The flight mission is expected to be completed within the time budget ($\Delta_t=24$ time steps)
+                        without any privacy risk.</li>
+                    <li class="mt-3">The UAV motion is discrete (up, down, left, right, forward, backward), and it moves at a constant speed of $0.5m/s$.
+                        The scale of the environment is $20\times20\times10m$, time step is $\tau=2s$, and prediction horizon is $N=2$.
+                        $\omega \in [33.3\%, 100\%]$, and orientation angles $-90^\circ$ (direct to ground) is represented with $\omega = 100\%$ and $30^\circ$ is $w = 33.3\%$.</li>
+                    <li class="mt-3">The approach is evaluated under the following tow settings:</li>
                     <ul>
-                        <li>Setting 1<br>The time budget ($\Delta$) is set as  at 48 time steps, with the affected radius of private region is $D_p=4.5m$. </li>
-                        <li>Setting 2 <br>The time budget ($\Delta$) is set as  at 30 time steps, with the affected radius of private region is $D_p=4m$. </li>
+                        <li>Setting 1<br>The deadline of the mission ($\Delta$) is set as 48 time steps, with the affected radius of the private region is $D_p=4.5m$. </li>
+                        <li>Setting 2 <br>The deadline of the mission ($\Delta$) is set as 30 time steps, with the affected radius of the private region is $D_p=4m$. </li>
                      </ul>
                 </ol>
             </div>
@@ -230,10 +233,10 @@
             </div>
             <div class="col">
                 <h5>Adaptive-Constrained Motion Planning with Setting 1</h5>
-                <p>At the 7th time steps, the UAV detected and located the private house. With ACMP the UAV analyzes whether the timeliness and privacy constraints can be satisfied.</p>
-                <p>After constraint satisfaction checking and analysis, the UAV found that those two constraints cannot be satisfied simultaneously and figured out an compromised resolution to go up, turning the orientation angle
-                    and resolution of the camera without exposing the private house.</p>
-                <p>Finally, the UAV reached the destination cost 26 time steps at the timeliness satisfaction of $DS^1(\mathcal{X}_\xi)=91.7\%$ and privacy preserving satisfaction of $DS^2(\mathcal{X}_{P})=96.6\%$.</p>
+                <p>At the seventh time step, the UAV detects and locates the private house. With ACMP, the UAV analyzes whether the timeliness and privacy constraints can be satisfied simultaneously.</p>
+                <p>After constraint satisfaction checking and analysis, the UAV found that these two constraints cannot be satisfied at the same time and figured out an compromised resolution to go up,
+                    turning the orientation angle up to the sky without exposing the private house.</p>
+                <p>Finally, the UAV reaches the destination with 26 time steps, timeliness satisfaction of $DS^1(\mathcal{X}_\xi)=91.7\%$, and privacy preserving satisfaction of $DS^2(\mathcal{X}_{P})=96.6\%$.</p>
             </div>
         </div>
         <div class="row">
@@ -244,15 +247,16 @@
             </div>
             <div class="col">
                 <h5>Adaptive-Constrained Motion Planning with Setting 2</h5>
-                <p>At the 8th time steps, the UAV detected and located the private house. With ACMP the UAV analyzes whether the timeliness and privacy constraint can be satisfied.</p>
-                <p>After constraint satisfaction checking and analysis, for the maximal constraint satisfaction, the UAV found that the timeliness constraint can be guaranteed with the compromised privacy-preservation constraint. Thus, it turned the orientation
-                    angle along the flight path when affected by the private region detected.</p>
-                <p>Finally, the UAV reached the destination cost 24 time steps at the timeliness satisfaction of $DS^1(\mathcal{X}_\xi)=100\%$ and privacy preserving satisfaction of $DS^2(\mathcal{X}_{P})=83.1\%$.</p>
+                <p>At the eighth time step, the UAV detects and locates the private house. With ACMP, the UAV analyzes whether the timeliness and privacy constraint can be satisfied.</p>
+                <p>After the constraint satisfaction checking and analyzing steps, the UAV finds the timeliness constraint can be guaranteed while the privacy constraint is unsatisfiable.
+                    It then changes the camera's orientation to avoid exposing the private house as much as possible while not changing the path. </p>
+                <p>Finally, the UAV reaches the destination with 24 time steps, timeliness satisfaction of $DS^1(\mathcal{X}_\xi)=100\%$, and privacy preserving satisfaction of $DS^2(\mathcal{X}_{P})=83.1\%$.</p>
             </div>
         </div>
         <p>
             <h5>Notes</h5>
-            As the UAV is controlled by a customized Android application deployed on a remote controller, communication delay is taken into consideration such that the UAV will wait for the next command.
+            As the UAV is controlled by a customized Android application deployed on a remote controller, communication delay is taken into consideration such that the UAV will wait for the next command and take
+            the action.
             In the future work, we plan to exploit the onboard SDK to save the communication time.
         </p>
 
@@ -268,14 +272,14 @@
                 <h2>Case 3 UUV Oceanic Surveillance</h2>
             </div>
         </div>
-        <p class="mb-3">This example originates from [1]. Rather than considering single-objective optimization for the UUV scenario, we extended it to achieve
-                    multiple dynamic constraints under uncertainties and disturbances through ACMP, while other configurations like sensors are kept the same.
-                    <br>The constraints to achieve in this scenario are listed as below:</p>
+        <p class="mb-3">This example originates from [1]. Rather than considering single-objective optimization for the UUV scenario, we extended it to achieve multiple constraints
+            under uncertainties and disturbances, while other parameters like sensor configurations are kept the same
+                    <br>The constraints to meet in this scenario are listed as below:</p>
                 <ul>
                     <li>Scanning Distance ($C_l$): A segment of the surface over a distance of $L_t=100$ km is expected to be examined by the UUV within $\Delta=10$ hours,
                         while the unrelaxable constraint of surveillance distance is $L=90$ km.  </li>
                     <li>Energy Consumption ($C_E$): A total amount of energy $E_t=5.4$ MJ is expected to be consumed, while the maximum amount of energy is $E=6$ MJ.</li>
-                    <li>Accuracy ($C_{\varphi}$): The accuracy of sensor measurements is targeted at $A_t=90\%$, while the unrelaxable accuracy constraint is set as $A = 80\%$. </li>
+                    <li>Accuracy ($C_{\varphi}$): The accuracy of measurements is targeted at $A_t=90\%$, while the unrelaxable accuracy constraint is set as $A = 80\%$. </li>
                 </ul>
          </p> <br>
 <!--        <p>-->
@@ -341,14 +345,13 @@
             </div>
             <div class="col">
                 <!--<h5>Case 3 UUV Oceanic Surveillance</h5>-->
-                <p> At $k = 100$, we change the target energy consumption ($E_t$) from 5.4 to 5.0 MJ; at $k = 160$,
-                    we change the distance expected to be scanned ($L_t$) from 100 to 105 km. The plots show that
-                    these changes in constraints lead to corresponding changes in the sensor usage arrangement,
-                    as the time portion for $S2$ increases. The figure also shows how
-                    ACMP reacts to changes in sensor parameters and sensor failures. At $k = 220$, the measurement
-                    accuracy of sensor $S3$ drastically decreases from 83\% to 43\%, at $k = 290$, $S4$ stops working,
-                    and leads to an optimal solution that $S1$ is more exploited. Finally, the mission end with average
-                    measurement accuracy at 90.1\%, scanning distance at 106.7 km, and energy consumption at 4.98 MJ.
+                <p> At time instant $k = 100$, we change the target energy consumption ($E_t$) from 5.4 MJ to 5.0 MJ; at $k = 160$,
+                    we change the distance expected to be scanned ($L_t$) from 100 km to 105 km. The figure show that
+                    changes in constraints lead to rearrangement of the sensor usage arrangement, as the time portion for $S2$ increases.
+                    ACMP also reacts to changes in sensor parameters and sensor failures. At $k = 220$, the measurement
+                    accuracy of sensor $S3$ drastically decreases from $83\%$ to $43\%$, at $k = 290$, $S4$ stops working,
+                    and leads to a suboptimal solution that $S1$ is more exploited. Finally, the mission ends with average
+                    measurement accuracy of $90.1\%$, scanning distance of 106.7 km, and energy consumption of 4.98 MJ.
                 </p>
             </div>
            </div>
@@ -372,9 +375,8 @@
             </div>
             <div class="col">
                 <!--<h5>Case 3 UUV Oceanic Surveillance</h5>-->
-                <p>The experimental results demonstrate the generality of ACMP.
-                   The performance of ACMP and SCMP is compared while adding disturbances to sensors' parameters at random time instants,
-                    i.e., sensor accuracy, scanning speed, and energy consumption.
+                <p>The performance of ACMP and SCMP is compared while adding disturbances to sensors' parameters (i.e., sensor accuracy, scanning speed, and energy consumption)
+                    at random time instants.
                     With ACMP, the UUV can scan a longer distance with higher accuracy and less energy consumption than SCMP.
                 </p>
             </div>
@@ -398,9 +400,7 @@
             </div>
             <div class="col">
                 <!--<h5>Case 3 UUV Oceanic Surveillance</h5>-->
-                <p>The difference in average computation time between SCMP and ACMP is about 7~ms
-                    (0.0423 s versus 0.0344 s) in the UUV case and 130~ms (0.2115 s versus 0.0811 s)
-                    in the quadrotor case.
+                <p>The difference in average computation time between SCMP and ACMP is about 130ms in the quadrotor case and 7ms in the UUV case.
                 </p>
             </div>
         </div>  <br>
@@ -423,7 +423,8 @@
             </div>
             <div class="col">
                 <!--<h5>Case 3 UUV Oceanic Surveillance</h5>-->
-                <p class="mb-3">In the UUV case, we choose $\epsilon_{l,E,\varphi} = \{0,0,10^{-3}\}$, when the possibility of reporting unsatisfiable constraints tends to be gentle.  </p>
+                <p class="mb-3"> Given a set of violation tolerances, the possibilities that relaxable constraints are reported as unsatisfiable are recorded per simulation
+                                under 9 times of random disturbances. </p>
 
             </div>
         </div>
